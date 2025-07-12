@@ -28,6 +28,9 @@ $output.="Ausgelesen am: ".date("d.m.Y H:i:s.", filemtime($datafile))."<br><br>"
 for ($i=0;$i<sizeof($links);$i++){
 	$output.="<a href='".$links[$i]."'>".$links_names[$i]."</a><br>\n";
 }
+if ($use_webcam){
+	$output.="<a href='https://".$_SERVER["HTTP_HOST"]."/pics_webcam.php'>Webcam Access</a><br>";
+}
 if ($show_charts){
 	$output.="<a href='".$_SERVER["PHP_SELF"]."'>back</a><br><br>";
 }else{
