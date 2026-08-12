@@ -10,10 +10,13 @@ $scale = 1000;
 $battery_min = 10;
 $links = array("index_quick.php","index_tables.php");
 $links_names = array("Quickinfo","Tables");
+$links_icons = array("pics/icon_quickinfo.png","pics/icon_tables.png");
+$show_dect_toggle_button = true;
 
 ########################################################################################
 ## no more config below
 ########################################################################################
+$check_dect_overwrite = file_exists("/home/tmp_www/dect_overwrite.tmp");
 $file = simplexml_load_file($datafile);
 $output = "";
 $charts = "";
@@ -26,17 +29,28 @@ if (isset($_GET['charts']) && strcmp($_GET['charts'],"yes")==0){
 
 $output.="Ausgelesen am: ".date("d.m.Y H:i:s.", filemtime($datafile))."<br><br>";
 for ($i=0;$i<sizeof($links);$i++){
-	$output.="<a href='".$links[$i]."'>".$links_names[$i]."</a><br>\n";
+	if (isset($links_icons)){
+		$output.="<a href='".$links[$i]."'><img src='".$links_icons[$i]."' width='64px'></a>\n";
+	}else{
+		$output.="<a href='".$links[$i]."'>".$links_names[$i]."</a><br>\n";
+	}
 }
 if ($use_webcam){
-	$output.="<a href='https://".$_SERVER["HTTP_HOST"]."/pics_webcam.php'>Webcam Access</a><br>";
+	$output.="<a href='https://".$_SERVER["HTTP_HOST"]."/pics_webcam.php'><img src='pics/icon_cams.png' width='64px'></a>";
+	#$output.="<a href='https://".$_SERVER["HTTP_HOST"]."/pics_webcam.php'>Webcam Access</a><br>";
 }
+$output.="<a href='https://".$_SERVER["HTTP_HOST"]."/index_links.php'><img src='pics/icon_links.png' width='64px'></a>";
+#$output.="<a href='https://".$_SERVER["HTTP_HOST"]."/index_links.php'>Links</a><br/>";
 if ($show_charts){
-	$output.="<a href='".$_SERVER["PHP_SELF"]."'>back</a><br><br>";
+	$output.="<a href='".$_SERVER["PHP_SELF"]."'><img src='pics/icon_back.png' width='64px'></a><br><br>";
+	#$output.="<a href='".$_SERVER["PHP_SELF"]."'>back</a><br><br>";
 }else{
-	$output.="<a href='".$_SERVER["PHP_SELF"]."?charts=yes'>Charts</a><br><br>";
+	$output.="<a href='".$_SERVER["PHP_SELF"]."?charts=yes'><img src='pics/icon_charts.png' width='64px'></a><br><br>";
+	#$output.="<a href='".$_SERVER["PHP_SELF"]."?charts=yes'>Charts</a><br><br>";
 }
-
+if ($show_dect_toggle_button){
+	$output.="<div style='align-items:center;display:flex;'><img src='pics/icon_boiler_off.png' width='64px'>: <input type='checkbox' class='checkcolor' id='dect_overwrite' disabled ".($check_dect_overwrite?"checked":"").">&nbsp;<button onclick='callDectOverwrite(true);'>An</button>&nbsp;&nbsp;<button onclick='callDectOverwrite(false)'>Aus</button></div><br>";
+}
 $temps = "<b>Temperaturen:</b><br>";
 $leistungen = "<b>Leistungen:</b><br>";
 $verbrauch = "<b>Verbrauch:</b><br>";
@@ -112,7 +126,7 @@ function createGridContainer($grid){
 	return $ret;
 }
 
-function createHomeContainer($home,$specials){
+function createHomeContainer($home,$specials,$special_data){
 	$ret='<g _ngcontent-c4="" id="homeContainer">';
 	$ret.='<polyline _ngcontent-c4="" class="svg-orange-stroke" fill="none" id="line-home" points="85,85 85,55 50,55" stroke-width="3"></polyline>';
 	$ret.='<circle _ngcontent-c4="" cx="85" cy="85" id="canvas-home" r="14" class="svg-green"></circle>';
@@ -121,6 +135,11 @@ function createHomeContainer($home,$specials){
 	$ret.='<path _ngcontent-c4="" d="M74.143,40.328h-4.577l-22.151-20.56c-2.704-2.692-7.091-2.779-9.755-0.12L15.317,40.328h-4.429c-2.145,0-2.627-1.042-1.068-2.526L39.679,9.575c1.563-1.481,4.115-1.439,5.68,0.042l29.854,28.165C76.78,39.267,76.298,40.328,74.143,40.328z" fill="#ffffff"></path>';
 	$ret.='<path _ngcontent-c4="" d="M45.4,23.087c-1.25-1.238-3.524-1.23-4.71-0.051L18.741,43.483V72.24c0,1.654,0.91,4.314,2.562,4.314h42.431c1.652,0,3.687-2.66,3.687-4.314V43.619L45.4,23.087z M32.13,41.135c3.578,0,6.576,2.085,7.352,4.872h-2.701c-0.75-1.372-2.55-2.343-4.651-2.343c-2.1,0.001-3.899,0.971-4.651,2.343h-2.702C25.555,43.22,28.554,41.135,32.13,41.135zM42.799,67.912c-8.229,0-14.986-5.471-15.76-12.464h31.523C57.791,62.441,51.031,67.912,42.799,67.912z M58.099,46.007c-0.749-1.372-2.552-2.343-4.649-2.343c-2.101,0-3.9,0.971-4.653,2.343h-2.701c0.776-2.787,3.774-4.872,7.354-4.872c3.575,0,6.576,2.085,7.352,4.872H58.099z" fill="#ffffff"></path>';
 	$ret.='</svg>';
+	$ret.=file_get_contents("pics/pic_boiler.svg");
+	$ret.=file_get_contents("pics/pic_pumpe.svg");
+	$ret.=file_get_contents("pics/pic_tv.svg");
+	$ret.=file_get_contents("pics/pic_printer.svg");
+
 	if (isset($specials) && is_array($specials)){
 		for ($i=0;$i<sizeof($specials);$i++){
 			if ($i<3){
@@ -130,18 +149,25 @@ function createHomeContainer($home,$specials){
 			}
 		}
 	}
+	if (isset($special_data) && is_array($special_data)){
+		$ret.='<svg _ngcontent-c4="" height="6" id="gid_special_device_01_a" width="20" x="94.5" y="48"><g _ngcontent-c4="" id="gid_special_device_01_b"><rect _ngcontent-c4="" class="svg-grey" height="6" id="canvas-text-special-device_01_a" rx="2" ry="2" width="10" x="0" y="0"></rect><text _ngcontent-c4="" fill="#ffffff" font-family="Roboto, Verdana" font-size="2.5" id="text-special-device-01_a" text-anchor="middle" x="5" y="4">'.$special_data[3].'<tspan _ngcontent-c4="" id="gid_special_device_01_c"></tspan></text></g></svg>';
+		$ret.='<svg _ngcontent-c4="" height="6" id="gid_special_device_02_a" width="20" x="98.5" y="68"><g _ngcontent-c4="" id="gid_special_device_02_b"><rect _ngcontent-c4="" class="svg-grey" height="6" id="canvas-text-special-device_02_a" rx="2" ry="2" width="10" x="0" y="0"></rect><text _ngcontent-c4="" fill="#ffffff" font-family="Roboto, Verdana" font-size="2.5" id="text-special-device-02_a" text-anchor="middle" x="5" y="4">'.$special_data[2].'<tspan _ngcontent-c4="" id="gid_special_device_02_c"></tspan></text></g></svg>';
+		$ret.='<svg _ngcontent-c4="" height="6" id="gid_special_device_03_a" width="20" x="68" y="94"><g _ngcontent-c4="" id="gid_special_device_03_b"><rect _ngcontent-c4="" class="svg-grey" height="6" id="canvas-text-special-device_03_a" rx="2" ry="2" width="10" x="0" y="0"></rect><text _ngcontent-c4="" fill="#ffffff" font-family="Roboto, Verdana" font-size="2.5" id="text-special-device-03_a" text-anchor="middle" x="5" y="4">'.$special_data[1].'<tspan _ngcontent-c4="" id="gid_special_device_03_c"></tspan></text></g></svg>';
+		$ret.='<svg _ngcontent-c4="" height="6" id="gid_special_device_04_a" width="20" x="92" y="94"><g _ngcontent-c4="" id="gid_special_device_04_b"><rect _ngcontent-c4="" class="svg-grey" height="6" id="canvas-text-special-device_04_a" rx="2" ry="2" width="10" x="0" y="0"></rect><text _ngcontent-c4="" fill="#ffffff" font-family="Roboto, Verdana" font-size="2.5" id="text-special-device-04_a" text-anchor="middle" x="5" y="4">'.$special_data[0].'<tspan _ngcontent-c4="" id="gid_special_device_04_c"></tspan></text></g></svg>';
+	}
+
 	$ret.='<svg _ngcontent-c4="" height="10" id="indicator-home" viewBox="0 0 15 15" width="10" x="80" y="58"><g _ngcontent-c4="" id="indicator-home-rot" transform="rotate(0 7.5 7.5)"><polygon _ngcontent-c4="" fill="#ffffff" points="1.5,0.5 13.5,0.5 7.5,15"></polygon><polygon _ngcontent-c4="" class="svg-orange-fill" id="indicator-home-color" points="2,0.0 13,0.0 7.5,13.5"></polygon></g></svg>';
 	$ret.='</g>';
 	return $ret;
 }
 
-function createInverterPicture($dc,$dc_small,$bat,$grid,$home,$soc,$cycles,$bat_cap,$bat_min,$fchargecap,$specials){
+function createInverterPicture($dc,$dc_small,$bat,$grid,$home,$soc,$cycles,$bat_cap,$bat_min,$fchargecap,$specials,$special_data){
 	$ret="<div _ngcontent-c4='' class='' style='width:1000px;'><div _ngcontent-c4='' id='test'></div>";
 	$ret.='<svg _ngcontent-c4="" class="mainsvg" height="75%" id="liveSVG" viewBox="0 0 105 100" width="100%">';
 	$ret.=createDCContainer($dc,$dc_small);
 	$ret.=createBatterieContainer($bat,$soc,$cycles,$bat_cap,$bat_min,$fchargecap);
 	$ret.=createGridContainer($grid);
-	$ret.=createHomeContainer($home,$specials);
+	$ret.=createHomeContainer($home,$specials,$special_data);
 	$ret.='<circle _ngcontent-c4="" cx="50" cy="50" id="canvas-inverter" r="14" class="svg-green"></circle>';
 	$ret.='<svg _ngcontent-c4="" height="25" id="shape-inverter" viewBox="0 0 85.04 85.04" width="25" x="37.5" y="37.5">';
 	$ret.='<path _ngcontent-c4="" d="M20.489,70.718c-0.179-0.707-1.472-50.964-1.472-51.419c0-1.286,2.489-3.865,4.158-5.077l1.218,61.281C22.83,74.184,20.781,71.901,20.489,70.718z" fill="#ffffff"></path>';
@@ -154,6 +180,7 @@ function createInverterPicture($dc,$dc_small,$bat,$grid,$home,$soc,$cycles,$bat_
 }
 
 $pv=0;$dc=0;$pv_bat=0;$bat=0;$grid=0;$home=0;$home_bat=0;$pv_small=0;$soc=0;$cycles=0;$specials=array();$home_p=0;$pv_p=0;$bat_cap;
+$special_data=array();
 if ($use_inverter) {
 	$myfile = fopen($inverter_data, "r") or die("Unable to open file!");
 	$content_inverter = fread($myfile,filesize($inverter_data));
@@ -250,11 +277,17 @@ for ($i=0;$i<sizeof($file->device);$i++){
 		if ($use_inverter && strcmp($dect_solar,$file->device[$i]->attributes()->ain)==0){
 			$pv_small = (int)(($file->device[$i]->strom)/$scale);
 		}
-		for ($j=0;$j<sizeof($home_specials);$j++){
-			if ($use_inverter && strcmp($home_specials[$j],$file->device[$i]->attributes()->ain)==0){
+		for ($j=0;$j<sizeof($home_show_data);$j++){
+			if ($use_inverter && strcmp($home_show_data[$j],$file->device[$i]->attributes()->ain)==0){
 				array_push($specials,$file->device[$i]->attributes()->name.": ".((int)ceil(($file->device[$i]->strom)/$scale))."W");
 			}
 		}
+		for ($j=0;$j<sizeof($home_specials);$j++){
+			if ($use_inverter && strcmp($home_specials[$j],$file->device[$i]->attributes()->ain)==0){
+				array_push($special_data,((int)ceil(($file->device[$i]->strom)/$scale))."W");
+			}
+		}
+
 
 		$blocks.="<b>Details ".$file->device[$i]->attributes()->name." (AIN=".$file->device[$i]->attributes()->ain."):</b><br>";
 		$blocks.="Temperatur: ".$file->device[$i]->temp." °C<br>";
@@ -272,7 +305,7 @@ for ($i=0;$i<sizeof($file->device);$i++){
 }
 if ($use_smart_meter && $use_inverter && $show_inverter){
 	#$output.=createInverterPicture($dc,$pv_small,$bat,$grid,(($dc-$pv_bat+$home_bat)+$pv_small+$grid),$soc,$cycles,$specials)."<br><br>";
-	$output.=createInverterPicture($pv_p,$pv_small,$bat,$grid,($home_p>0?$home_p+$pv_small:$home_p+$pv_small),$soc,$cycles,$bat_cap,$battery_min,$fchargecap,$specials)."<br><br>";
+	$output.=createInverterPicture($pv_p,$pv_small,$bat,$grid,($home_p>0?$home_p+$pv_small:$home_p+$pv_small),$soc,$cycles,$bat_cap,$battery_min,$fchargecap,$specials,$special_data)."<br><br>";
 }
 
 if ($use_blocks){
@@ -326,7 +359,9 @@ echo "<html><head>\n";
 if (!$show_charts){
 	echo "<meta http-equiv=\"refresh\" content=\"".$chart_view_refresh."\">\n";
 }
-echo "<link rel=\"stylesheet\" href=\"./index.css\"></head><body style='font-size:2vh;'>\n";
+echo "<link rel=\"stylesheet\" href=\"index.css\">\n";
+echo "<script src=\"index.js\"></script>\n";
+echo "</head><body style='font-size:2vh;'>\n";
 echo $output;
 if ($show_charts){
 	echo $charts;

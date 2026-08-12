@@ -59,6 +59,7 @@ $graph_energy_monthly_y_scale = 300;
 # kostal inverter data file
 ########################################################################################
 $use_inverter = true;
+$home_show_data = array("116300186781","116300186042","116300214431");
 $home_specials = array("116300186781","116300186042","116300214431");
 $inverter_data = $basedir."/inverter_data/inv.data";
 
