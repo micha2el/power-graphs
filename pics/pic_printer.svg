@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="10"
+     height="10"
+     x="100"
+     y="90"
+     viewBox="0 0 300 300">
+
+    <!-- Hintergrund -->
+    <circle cx="150"
+            cy="150"
+            r="145"
+            fill="#B4CD32"/>
+
+    <!-- Drucker -->
+    <g>
+
+        <!-- Oberes Papierfach -->
+        <rect x="95"
+              y="55"
+              width="110"
+              height="65"
+              rx="6"
+              fill="#FFFFFF"/>
+
+        <!-- Papier -->
+        <rect x="110"
+              y="65"
+              width="80"
+              height="50"
+              rx="3"
+              fill="#92D050"/>
+
+        <!-- Dokumentlinien -->
+        <rect x="125" y="78" width="50" height="4" rx="2" fill="#FFFFFF"/>
+        <rect x="125" y="88" width="40" height="4" rx="2" fill="#FFFFFF"/>
+        <rect x="125" y="98" width="30" height="4" rx="2" fill="#FFFFFF"/>
+
+        <!-- Druckergehäuse -->
+        <rect x="70"
+              y="110"
+              width="160"
+              height="95"
+              rx="12"
+              fill="#FFFFFF"/>
+
+        <!-- grüner Innenrahmen -->
+        <rect x="85"
+              y="125"
+              width="130"
+              height="45"
+              rx="6"
+              fill="#92D050"/>
+
+        <!-- Ausgabeschacht -->
+        <rect x="95"
+              y="133"
+              width="110"
+              height="29"
+              rx="4"
+              fill="#FFFFFF"/>
+
+        <!-- Ausgegebenes Papier -->
+        <rect x="105"
+              y="180"
+              width="90"
+              height="45"
+              rx="4"
+              fill="#FFFFFF"/>
+
+        <!-- Papierlinien -->
+        <rect x="118" y="192" width="64" height="3" rx="1.5" fill="#92D050"/>
+        <rect x="118" y="201" width="54" height="3" rx="1.5" fill="#92D050"/>
+        <rect x="118" y="210" width="42" height="3" rx="1.5" fill="#92D050"/>
+
+        <!-- Status LED -->
+        <circle cx="205"
+                cy="145"
+                r="4"
+                fill="#92D050"/>
+
+        <!-- Bedienknopf -->
+        <circle cx="90"
+                cy="145"
+                r="6"
+                fill="#92D050"/>
+
+        <!-- Reflexion links -->
+        <polygon points="78,118 95,118 82,200 78,200"
+                 fill="#92D050"
+                 opacity="0.15"/>
+
+    </g>
+
+</svg>

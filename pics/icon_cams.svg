@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" width="1254" height="1254" xmlns:c2pa="http://c2pa.org/manifest">
+<rect width="1254" height="1254" fill="#ffffff"/>
+<defs><g id="cam">
+<path d="M0 -92H236Q290 -92 290 -38V32Q290 92 230 92H0Z" fill="#f2f3f6"/>
+<path d="M0 36H290V32Q290 92 230 92H0Z" fill="#d9dae1"/>
+<path d="M-72 -5C-90 -120 -20 -125 40 -118L240 -100Q295 -90 292 -30L292 -2Q140 -40 20 -38Q-40 -35 -72 -5Z" fill="#0a62f0"/>
+<ellipse cx="0" cy="0" rx="95" ry="108" fill="#f2f3f6"/>
+<ellipse cx="0" cy="0" rx="66" ry="78" fill="#363d49"/>
+<ellipse cx="0" cy="0" rx="40" ry="48" fill="#2a303b"/>
+<circle cx="0" cy="0" r="16" fill="#c9ccd4"/><circle cx="0" cy="0" r="8" fill="#ffffff"/>
+</g></defs>
+<rect x="537" y="820" width="240" height="170" rx="32" fill="#0a62f0"/>
+<circle cx="568" cy="952" r="14" fill="#0a3fa8"/><circle cx="745" cy="952" r="14" fill="#0a3fa8"/>
+<g stroke="#464f5c" stroke-width="38" stroke-linecap="round"><path d="M395 808L600 890"/><path d="M905 808L712 890"/></g>
+<rect x="635" y="560" width="42" height="180" fill="#4d5866"/>
+<rect x="594" y="725" width="124" height="225" rx="12" fill="#4f5a69"/>
+<use href="#cam" transform="translate(527 418) rotate(20)"/>
+<use href="#cam" transform="translate(210 700) rotate(10) scale(.88)"/>
+<use href="#cam" transform="translate(1045 725) scale(-.88 .88) rotate(-6)"/>
+</svg>

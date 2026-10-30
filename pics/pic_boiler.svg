@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="15"
+     height="15"
+     x="92"
+     y="53"
+     viewBox="0 0 300 300">
+
+    <defs>
+        <!-- Boiler 3D -->
+        <linearGradient id="boilerBody" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="20%" stop-color="#f3f3f3"/>
+            <stop offset="50%" stop-color="#ffffff"/>
+            <stop offset="80%" stop-color="#ececec"/>
+            <stop offset="100%" stop-color="#dcdcdc"/>
+        </linearGradient>
+
+        <!-- Status LED -->
+        <radialGradient id="ledGlow">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="40%" stop-color="#b8ff9a"/>
+            <stop offset="100%" stop-color="#6fbf3f"/>
+        </radialGradient>
+
+        <!-- leichter Schatten -->
+        <filter id="shadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="2"
+                flood-color="#5a8a2f" flood-opacity="0.25"/>
+        </filter>
+    </defs>
+
+    <!-- Hintergrundkreis -->
+    <circle cx="150" cy="150"
+            r="145"
+            fill="#B4CD32"/>
+
+    <!-- Boiler -->
+    <g filter="url(#shadow)">
+
+        <!-- Deckel -->
+        <ellipse cx="150"
+                 cy="72"
+                 rx="55"
+                 ry="16"
+                 fill="#ffffff"/>
+
+        <!-- Korpus -->
+        <rect x="95"
+              y="72"
+              width="110"
+              height="150"
+              fill="url(#boilerBody)"/>
+
+        <!-- Boden -->
+        <ellipse cx="150"
+                 cy="222"
+                 rx="55"
+                 ry="16"
+                 fill="#f4f4f4"/>
+
+        <!-- Glanzkante links -->
+        <rect x="102"
+              y="80"
+              width="4"
+              height="135"
+              fill="#ffffff"
+              opacity="0.75"/>
+
+        <!-- rechte Schattenkante -->
+        <rect x="194"
+              y="80"
+              width="4"
+              height="135"
+              fill="#d0d0d0"
+              opacity="0.8"/>
+
+        <!-- Temperaturanzeige -->
+        <circle cx="150"
+                cy="108"
+                r="21"
+                fill="none"
+                stroke="#8AD04A"
+                stroke-width="4"/>
+
+        <!-- Skalenmarkierungen -->
+        <line x1="150" y1="89" x2="150" y2="95"
+              stroke="#8AD04A" stroke-width="2"/>
+        <line x1="131" y1="108" x2="137" y2="108"
+              stroke="#8AD04A" stroke-width="2"/>
+        <line x1="169" y1="108" x2="163" y2="108"
+              stroke="#8AD04A" stroke-width="2"/>
+
+        <!-- Thermometer-Zeiger -->
+        <circle cx="150"
+                cy="108"
+                r="4"
+                fill="#8AD04A"/>
+
+        <line x1="150"
+              y1="108"
+              x2="162"
+              y2="95"
+              stroke="#8AD04A"
+              stroke-width="4"
+              stroke-linecap="round"/>
+
+        <!-- kleine Temperaturanzeige -->
+        <circle cx="162"
+                cy="95"
+                r="2"
+                fill="#8AD04A"/>
+
+        <!-- LED -->
+        <ellipse cx="150"
+                 cy="188"
+                 rx="13"
+                 ry="6"
+                 fill="url(#ledGlow)"/>
+
+        <!-- LED Glanz -->
+        <ellipse cx="147"
+                 cy="186"
+                 rx="4"
+                 ry="2"
+                 fill="#ffffff"
+                 opacity="0.8"/>
+
+        <!-- Sockel -->
+        <ellipse cx="150"
+                 cy="238"
+                 rx="40"
+                 ry="9"
+                 fill="#f8f8f8"/>
+
+        <ellipse cx="150"
+                 cy="242"
+                 rx="34"
+                 ry="6"
+                 fill="#e8e8e8"/>
+
+        <!-- Anschlüsse -->
+        <rect x="123"
+              y="245"
+              width="12"
+              height="34"
+              rx="6"
+              fill="#ffffff"/>
+
+        <rect x="165"
+              y="245"
+              width="12"
+              height="34"
+              rx="6"
+              fill="#ffffff"/>
+
+        <!-- Anschlussringe -->
+        <rect x="123"
+              y="245"
+              width="12"
+              height="4"
+              rx="2"
+              fill="#dcdcdc"/>
+
+        <rect x="165"
+              y="245"
+              width="12"
+              height="4"
+              rx="2"
+              fill="#dcdcdc"/>
+    </g>
+</svg>

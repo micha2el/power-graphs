@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" width="1254" height="1254" xmlns:c2pa="http://c2pa.org/manifest">
+<rect width="1254" height="1254" fill="#ffffff"/>
+<g fill="none" stroke="#0457f0" stroke-width="44" stroke-linecap="round" stroke-linejoin="round">
+<path d="M306 440V335Q306 273 368 273H905Q963 273 963 335V640"/>
+<path d="M312 790V868Q312 945 380 945H790"/></g>
+<g fill="#0457f0">
+<rect x="178" y="501" width="283" height="42" rx="21"/><rect x="127" y="601" width="273" height="42" rx="21"/><rect x="217" y="700" width="251" height="42" rx="21"/>
+<circle cx="652" cy="435" r="58"/>
+<rect x="610" y="527" width="93" height="250"/><rect x="585" y="527" width="118" height="52" rx="22"/><rect x="585" y="762" width="145" height="56" rx="26"/></g>
+<circle cx="930" cy="818" r="156" fill="#4fb80f" stroke="#ffffff" stroke-width="14"/>
+<path d="M963 708L856 826L910 834L888 918L1003 797L947 797Z" fill="#ffffff" stroke="#ffffff" stroke-width="10" stroke-linejoin="round"/>
+</svg>

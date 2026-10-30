@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" width="1254" height="1254" xmlns:c2pa="http://c2pa.org/manifest">
+<rect width="1254" height="1254" fill="#ffffff"/>
+<path d="M380 172A190 190 0 0 1 380 552Z" fill="#2f6fe4"/>
+<path d="M365 177A190 190 0 0 0 220 468L365 362Z" fill="#6cb82e"/>
+<path d="M380 372L233 487A190 190 0 0 0 380 552Z" fill="#f59a0c"/>
+<rect x="286" y="789" width="151" height="215" rx="14" fill="#3b7be8"/>
+<rect x="488" y="685" width="150" height="319" rx="14" fill="#4caf32"/>
+<rect x="683" y="556" width="151" height="448" rx="14" fill="#fba90c"/>
+<rect x="885" y="411" width="150" height="593" rx="14" fill="#f44e22"/>
+<path d="M240 1011H1078" stroke="#1f2a44" stroke-width="26" stroke-linecap="round"/>
+<path d="M361 680L529 573L713 425Q760 425 800 395L972 264" fill="none" stroke="#1f2a44" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="#1f2a44"><circle cx="361" cy="680" r="35"/><circle cx="529" cy="573" r="36"/><circle cx="713" cy="425" r="36"/><circle cx="972" cy="264" r="40"/></g>
+</svg>

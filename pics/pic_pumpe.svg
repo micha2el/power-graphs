@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="9"
+     height="9"
+     x="90"
+     y="66"
+     viewBox="0 0 300 300">
+
+    <!-- Hintergrund -->
+    <circle cx="150"
+            cy="150"
+            r="145"
+            fill="#B4CD32"/>
+
+    <g>
+
+        <!-- Linker Anschluss -->
+        <rect x="40"
+              y="130"
+              width="50"
+              height="40"
+              rx="8"
+              fill="#FFFFFF"/>
+
+        <!-- Rechter Anschluss -->
+        <rect x="210"
+              y="130"
+              width="50"
+              height="40"
+              rx="8"
+              fill="#FFFFFF"/>
+
+        <!-- Hauptgehäuse -->
+        <circle cx="150"
+                cy="150"
+                r="65"
+                fill="#FFFFFF"/>
+
+        <!-- Pumpenkammer -->
+        <circle cx="150"
+                cy="150"
+                r="42"
+                fill="#92D050"/>
+
+        <!-- Impeller -->
+        <circle cx="150"
+                cy="150"
+                r="12"
+                fill="#FFFFFF"/>
+
+        <!-- Pumpenflügel -->
+        <path d="M150 115
+                 Q165 125 160 145
+                 Q145 138 150 115"
+              fill="#FFFFFF"/>
+
+        <path d="M185 150
+                 Q175 165 155 160
+                 Q162 145 185 150"
+              fill="#FFFFFF"/>
+
+        <path d="M150 185
+                 Q135 175 140 155
+                 Q155 162 150 185"
+              fill="#FFFFFF"/>
+
+        <path d="M115 150
+                 Q125 135 145 140
+                 Q138 155 115 150"
+              fill="#FFFFFF"/>
+
+        <!-- Befestigungsschrauben -->
+        <circle cx="150" cy="95" r="6" fill="#92D050"/>
+        <circle cx="205" cy="150" r="6" fill="#92D050"/>
+        <circle cx="150" cy="205" r="6" fill="#92D050"/>
+        <circle cx="95" cy="150" r="6" fill="#92D050"/>
+
+        <!-- Status LED -->
+        <circle cx="200"
+                cy="105"
+                r="5"
+                fill="#92D050"/>
+
+        <!-- Reflexion -->
+        <path d="M115 105
+                 Q95 130 98 165
+                 L108 165
+                 Q105 135 125 112 Z"
+                 fill="#92D050"
+                 opacity="0.15"/>
+
+    </g>
+
+</svg>

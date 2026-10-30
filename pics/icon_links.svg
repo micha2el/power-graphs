@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" width="1254" height="1254" xmlns:c2pa="http://c2pa.org/manifest">
+<rect width="1254" height="1254" fill="#ffffff"/>
+<defs><g id="lnk" fill="none" stroke-width="22" transform="rotate(-45)">
+<rect x="-98" y="-38" width="116" height="76" rx="38"/><rect x="-20" y="-38" width="116" height="76" rx="38"/></g></defs>
+<rect x="230" y="233" width="795" height="774" rx="85" fill="#0457f0"/>
+<rect x="252" y="380" width="750" height="605" rx="42" fill="#ffffff"/>
+<rect x="252" y="380" width="750" height="60" fill="#ffffff"/>
+<circle cx="313" cy="313" r="23" fill="#3b8cf5"/><circle cx="391" cy="313" r="23" fill="#55c21a"/><circle cx="469" cy="313" r="23" fill="#ffa91e"/>
+<g stroke="#e5e5ec" stroke-width="3"><path d="M285 584H968"/><path d="M285 780H968"/></g>
+<g fill="#d5d5de">
+<rect x="516" y="448" width="404" height="26" rx="13"/><rect x="516" y="503" width="280" height="26" rx="13"/>
+<rect x="516" y="644" width="404" height="26" rx="13"/><rect x="516" y="699" width="280" height="26" rx="13"/>
+<rect x="516" y="841" width="404" height="26" rx="13"/><rect x="516" y="896" width="280" height="26" rx="13"/></g>
+<use href="#lnk" transform="translate(397 488)" stroke="#0a56f0"/>
+<use href="#lnk" transform="translate(397 683)" stroke="#55c21a"/>
+<use href="#lnk" transform="translate(397 880)" stroke="#ffa91e"/>
+</svg>

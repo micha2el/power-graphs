@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="10"
+     height="10"
+     x="60"
+     y="90"
+     viewBox="0 0 300 300">
+
+    <!-- Hintergrund -->
+    <circle cx="150"
+            cy="150"
+            r="145"
+            fill="#B4CD32"/>
+
+    <!-- Fernseher -->
+    <g>
+
+        <!-- Gehäuserahmen -->
+        <rect x="55"
+              y="70"
+              width="190"
+              height="125"
+              rx="12"
+              fill="#FFFFFF"/>
+
+        <!-- weiße Glanzkante links -->
+        <rect x="61"
+              y="78"
+              width="4"
+              height="108"
+              rx="2"
+              fill="#FFFFFF"
+              opacity="0.9"/>
+
+        <!-- grüner Innenrahmen -->
+        <rect x="68"
+              y="83"
+              width="164"
+              height="99"
+              rx="8"
+              fill="#92D050"/>
+
+        <!-- Display -->
+        <rect x="76"
+              y="91"
+              width="148"
+              height="83"
+              rx="5"
+              fill="#FFFFFF"/>
+
+        <!-- äußerer Displayrahmen -->
+        <rect x="76"
+              y="91"
+              width="148"
+              height="83"
+              rx="5"
+              fill="none"
+              stroke="#FFFFFF"
+              stroke-width="2"
+              opacity="0.8"/>
+
+        <!-- Display-Reflexion -->
+        <polygon points="84,97 120,97 98,168 84,168"
+                 fill="#92D050"
+                 opacity="0.15"/>
+
+        <!-- zweite Reflexion -->
+        <polygon points="130,97 145,97 122,168 112,168"
+                 fill="#92D050"
+                 opacity="0.08"/>
+
+        <!-- Status-LED -->
+        <circle cx="150"
+                cy="188"
+                r="4"
+                fill="#92D050"/>
+
+        <!-- Standfuß -->
+        <rect x="142"
+              y="196"
+              width="16"
+              height="25"
+              rx="3"
+              fill="#FFFFFF"/>
+
+        <!-- Fuß -->
+        <ellipse cx="150"
+                 cy="232"
+                 rx="42"
+                 ry="8"
+                 fill="#FFFFFF"/>
+
+    </g>
+
+</svg>

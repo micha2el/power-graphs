@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     id="lamp_01"
+     width="10"
+     height="10"
+     x="60"
+     y="70"
+     viewBox="0 0 300 300">
+
+    <!-- Hintergrund -->
+    <circle cx="150"
+            cy="150"
+            r="145"
+            fill="#B4CD32"
+    />
+
+    <g>
+
+        <!-- Lichtstrahlen -->
+        <rect x="146" y="35" width="8" height="25" rx="4" fill="#FFFFFF"/>
+
+        <rect x="85" y="60"
+              width="8" height="22"
+              rx="4"
+              fill="#FFFFFF"
+              transform="rotate(-35 89 71)"/>
+
+        <rect x="207" y="60"
+              width="8" height="22"
+              rx="4"
+              fill="#FFFFFF"
+              transform="rotate(35 211 71)"/>
+
+        <rect x="58" y="120"
+              width="22" height="8"
+              rx="4"
+              fill="#FFFFFF"/>
+
+        <rect x="220" y="120"
+              width="22" height="8"
+              rx="4"
+              fill="#FFFFFF"/>
+
+        <!-- Glühbirne -->
+        <path d="
+            M150 70
+            C105 70 75 103 75 145
+            C75 175 92 195 110 210
+            C119 218 124 228 124 240
+            L176 240
+            C176 228 181 218 190 210
+            C208 195 225 175 225 145
+            C225 103 195 70 150 70 Z"
+            fill="#FFFFFF"/>
+
+        <!-- Grüner Innenbereich -->
+        <path d="
+            M150 92
+            C117 92 95 116 95 145
+            C95 166 107 182 121 194
+            C130 201 134 208 136 218
+            L164 218
+            C166 208 170 201 179 194
+            C193 182 205 166 205 145
+            C205 116 183 92 150 92 Z"
+            fill="#B4CD32"/>
+
+        <!-- Filament -->
+        <path d="
+            M125 150
+            Q140 132 150 150
+            Q160 132 175 150"
+            fill="none"
+            stroke="#FFFFFF"
+            stroke-width="6"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+
+        <!-- Filament-Stützen -->
+        <line x1="135" y1="150"
+              x2="135" y2="180"
+              stroke="#FFFFFF"
+              stroke-width="5"
+              stroke-linecap="round"/>
+
+        <line x1="165" y1="150"
+              x2="165" y2="180"
+              stroke="#FFFFFF"
+              stroke-width="5"
+              stroke-linecap="round"/>
+
+        <!-- Sockel -->
+        <rect x="120"
+              y="240"
+              width="60"
+              height="18"
+              rx="4"
+              fill="#FFFFFF"/>
+
+        <rect x="120"
+              y="262"
+              width="60"
+              height="14"
+              rx="4"
+              fill="#FFFFFF"/>
+
+        <!-- Sockelrillen -->
+        <rect x="128"
+              y="246"
+              width="44"
+              height="3"
+              rx="1.5"
+              fill="#92D050"/>
+
+        <rect x="128"
+              y="266"
+              width="44"
+              height="3"
+              rx="1.5"
+              fill="#92D050"/>
+
+        <!-- Reflexion -->
+        <path d="
+            M112 105
+            Q95 125 95 155
+            L105 155
+            Q105 130 120 112 Z"
+            fill="#FFFFFF"
+            opacity="0.35"/>
+
+    </g>
+
+</svg>

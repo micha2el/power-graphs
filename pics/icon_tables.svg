@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" width="1254" height="1254" xmlns:c2pa="http://c2pa.org/manifest">
+<rect width="1254" height="1254" fill="#ffffff"/>
+<rect x="219" y="258" width="818" height="725" rx="55" fill="#ffffff" stroke="#1e5fd8" stroke-width="34"/>
+<g fill="#1273f0"><rect x="256" y="294" width="233" height="140" rx="10"/><rect x="509" y="294" width="238" height="140" rx="10"/><rect x="767" y="294" width="234" height="140" rx="10"/></g>
+<g fill="#6ab552"><rect x="256" y="455" width="233" height="152" rx="10"/><rect x="256" y="629" width="233" height="148" rx="10"/><rect x="256" y="800" width="233" height="149" rx="10"/></g>
+<g fill="#e8e8eb">
+<rect x="509" y="455" width="238" height="152" rx="10"/><rect x="767" y="455" width="234" height="152" rx="10"/>
+<rect x="509" y="629" width="238" height="148" rx="10"/><rect x="767" y="629" width="234" height="148" rx="10"/>
+<rect x="509" y="800" width="238" height="149" rx="10"/><rect x="767" y="800" width="234" height="149" rx="10"/></g>
+</svg>

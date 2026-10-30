@@ -10,7 +10,7 @@ $scale = 1000;
 $battery_min = 10;
 $links = array("index_quick.php","index_tables.php");
 $links_names = array("Quickinfo","Tables");
-$links_icons = array("pics/icon_quickinfo.png","pics/icon_tables.png");
+$links_icons = array("pics/icon_quickinfo.svg","pics/icon_tables.svg");
 $show_dect_toggle_button = true;
 
 ########################################################################################
@@ -27,7 +27,7 @@ if (isset($_GET['charts']) && strcmp($_GET['charts'],"yes")==0){
 	$show_inverter = false;
 }
 
-$output.="Ausgelesen am: ".date("d.m.Y H:i:s.", filemtime($datafile))."<br><br>";
+$output.="Ausgelesen am: ".date("d.m.Y H:i:s.", filemtime($datafile))."<br>";
 for ($i=0;$i<sizeof($links);$i++){
 	if (isset($links_icons)){
 		$output.="<a href='".$links[$i]."'><img src='".$links_icons[$i]."' width='64px'></a>\n";
@@ -36,20 +36,20 @@ for ($i=0;$i<sizeof($links);$i++){
 	}
 }
 if ($use_webcam){
-	$output.="<a href='https://".$_SERVER["HTTP_HOST"]."/pics_webcam.php'><img src='pics/icon_cams.png' width='64px'></a>";
+	$output.="<a href='https://".$_SERVER["HTTP_HOST"]."/reo_live.php'><img src='pics/icon_cams.svg' width='64px'></a>";
 	#$output.="<a href='https://".$_SERVER["HTTP_HOST"]."/pics_webcam.php'>Webcam Access</a><br>";
 }
-$output.="<a href='https://".$_SERVER["HTTP_HOST"]."/index_links.php'><img src='pics/icon_links.png' width='64px'></a>";
+$output.="<a href='https://".$_SERVER["HTTP_HOST"]."/index_links.php'><img src='pics/icon_links.svg' width='64px'></a>";
 #$output.="<a href='https://".$_SERVER["HTTP_HOST"]."/index_links.php'>Links</a><br/>";
 if ($show_charts){
-	$output.="<a href='".$_SERVER["PHP_SELF"]."'><img src='pics/icon_back.png' width='64px'></a><br><br>";
+	$output.="<a href='".$_SERVER["PHP_SELF"]."'><img src='pics/icon_back.svg' width='64px'></a><br><br>";
 	#$output.="<a href='".$_SERVER["PHP_SELF"]."'>back</a><br><br>";
 }else{
-	$output.="<a href='".$_SERVER["PHP_SELF"]."?charts=yes'><img src='pics/icon_charts.png' width='64px'></a><br><br>";
+	$output.="<a href='".$_SERVER["PHP_SELF"]."?charts=yes'><img src='pics/icon_charts.svg' width='64px'></a><br><br>";
 	#$output.="<a href='".$_SERVER["PHP_SELF"]."?charts=yes'>Charts</a><br><br>";
 }
 if ($show_dect_toggle_button){
-	$output.="<div style='align-items:center;display:flex;'><img src='pics/icon_boiler_off.png' width='64px'>: <input type='checkbox' class='checkcolor' id='dect_overwrite' disabled ".($check_dect_overwrite?"checked":"").">&nbsp;<button onclick='callDectOverwrite(true);'>An</button>&nbsp;&nbsp;<button onclick='callDectOverwrite(false)'>Aus</button></div><br>";
+	$output.="<div style='align-items:center;display:flex;'><img src='pics/icon_boiler_off.svg' width='64px'>: <input type='checkbox' class='checkcolor' id='dect_overwrite' disabled ".($check_dect_overwrite?"checked":"").">&nbsp;<button onclick='callDectOverwrite(true);'>An</button>&nbsp;&nbsp;<button onclick='callDectOverwrite(false)'>Aus</button></div><br>";
 }
 $temps = "<b>Temperaturen:</b><br>";
 $leistungen = "<b>Leistungen:</b><br>";
@@ -135,11 +135,17 @@ function createHomeContainer($home,$specials,$special_data){
 	$ret.='<path _ngcontent-c4="" d="M74.143,40.328h-4.577l-22.151-20.56c-2.704-2.692-7.091-2.779-9.755-0.12L15.317,40.328h-4.429c-2.145,0-2.627-1.042-1.068-2.526L39.679,9.575c1.563-1.481,4.115-1.439,5.68,0.042l29.854,28.165C76.78,39.267,76.298,40.328,74.143,40.328z" fill="#ffffff"></path>';
 	$ret.='<path _ngcontent-c4="" d="M45.4,23.087c-1.25-1.238-3.524-1.23-4.71-0.051L18.741,43.483V72.24c0,1.654,0.91,4.314,2.562,4.314h42.431c1.652,0,3.687-2.66,3.687-4.314V43.619L45.4,23.087z M32.13,41.135c3.578,0,6.576,2.085,7.352,4.872h-2.701c-0.75-1.372-2.55-2.343-4.651-2.343c-2.1,0.001-3.899,0.971-4.651,2.343h-2.702C25.555,43.22,28.554,41.135,32.13,41.135zM42.799,67.912c-8.229,0-14.986-5.471-15.76-12.464h31.523C57.791,62.441,51.031,67.912,42.799,67.912z M58.099,46.007c-0.749-1.372-2.552-2.343-4.649-2.343c-2.101,0-3.9,0.971-4.653,2.343h-2.701c0.776-2.787,3.774-4.872,7.354-4.872c3.575,0,6.576,2.085,7.352,4.872H58.099z" fill="#ffffff"></path>';
 	$ret.='</svg>';
-	$ret.=file_get_contents("pics/pic_boiler.svg");
-	$ret.=file_get_contents("pics/pic_pumpe.svg");
-	$ret.=file_get_contents("pics/pic_tv.svg");
-	$ret.=file_get_contents("pics/pic_printer.svg");
-
+	$ret.='<image href="pics/pic_boiler.svg" x="92" y="53"/>';
+	$ret.='<image href="pics/pic_pumpe.svg" x="90" y="66"/>';
+	$ret.='<image href="pics/pic_tv.svg" x="60" y="90"/>';
+	$ret.='<image href="pics/pic_printer.svg" x="100" y="90"/>';
+	$payload = file_get_contents('http://192.168.1.190/rpc/Shelly.GetStatus');
+	$payload_data = json_decode($payload);
+	if ($payload_data->{'switch:0'}->output==true){
+		$ret.='<image id="lamp_01" href="pics/pic_bulp_on.svg" x="60" y="70" onclick="toggleLamp(false);"/>';
+	}else{
+		$ret.='<image id="lamp_01" href="pics/pic_bulp_off.svg" x="60" y="70" onclick="toggleLamp(true);"/>';
+	}
 	if (isset($specials) && is_array($specials)){
 		for ($i=0;$i<sizeof($specials);$i++){
 			if ($i<3){
@@ -163,7 +169,7 @@ function createHomeContainer($home,$specials,$special_data){
 
 function createInverterPicture($dc,$dc_small,$bat,$grid,$home,$soc,$cycles,$bat_cap,$bat_min,$fchargecap,$specials,$special_data){
 	$ret="<div _ngcontent-c4='' class='' style='width:1000px;'><div _ngcontent-c4='' id='test'></div>";
-	$ret.='<svg _ngcontent-c4="" class="mainsvg" height="75%" id="liveSVG" viewBox="0 0 105 100" width="100%">';
+	$ret.='<svg _ngcontent-c4="" class="mainsvg" height="75%" id="liveSVG" viewBox="0 0 110 100" width="100%">';
 	$ret.=createDCContainer($dc,$dc_small);
 	$ret.=createBatterieContainer($bat,$soc,$cycles,$bat_cap,$bat_min,$fchargecap);
 	$ret.=createGridContainer($grid);
