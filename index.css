@@ -114,3 +114,156 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+
+/* ==========================================================================
+   Seitenlayout, Menü und Hell-/Dunkelmodus (verwendet von index.php)
+   Standard ist die Browser-Einstellung (prefers-color-scheme). Ein manueller Wechsel
+   setzt data-theme="light|dark" am <html>-Element (Schalter neben "Stand") und gewinnt dann.
+   ========================================================================== */
+
+/* Farben (hell) */
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --muted: #5E5E5E;          /* wie .svg-grey */
+  --danger: #d9534f;         /* wie .red-txt */
+  --track: #cccccc;          /* wie .slider */
+  --track-stroke: #b3b3b3;
+  --knob: #ffffff;           /* wie .slider:before */
+  --knob-stroke: #9a9d99;
+  --btn-bg: #5E5E5E;         /* Details-Knopf, wie .svg-grey (dunkler als das frühere grey) */
+  --btn-fg: #ffffff;
+  --nav-icon-size: 40px;     /* Größe der Menü-Symbole */
+  color-scheme: light;
+}
+
+/* Seite */
+body { font-size: 2vh; }
+
+/* Menü: schlanke Leiste mit Symbolen links und Stand rechts */
+.nav-bar { display: flex; align-items: center; gap: 2px; margin-bottom: 4px; }
+.nav-link { display: inline-flex; padding: 4px; }
+.nav-icon { width: var(--nav-icon-size); height: auto; }
+.stand { margin-left: auto; color: var(--muted); }
+.theme-btn {
+  margin-left: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--muted);
+  border-radius: 8px;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+.ico-sun { display: none; }   /* im hellen Modus Mond, im dunklen Sonne */
+
+/* Mobile Ansicht: Menü-Symbole etwa 1/3 größer (40px -> 53px).
+   Ohne viewport-Angabe melden Handys eine Seitenbreite von ca. 980px, deshalb gilt zusätzlich die Touch-Erkennung. */
+@media (max-width: 600px), (hover: none) and (pointer: coarse) {
+  :root { --nav-icon-size: 53px; }
+}
+
+/* Texte */
+.err { color: var(--danger); }
+
+/* Farben der Boiler-Anzeige, aus der Palette oben abgeleitet */
+.svg-red { fill: #d9534f; }                 /* wie .red-txt */
+.svg-red-stroke { stroke: #d9534f; }
+.svg-grey-stroke { stroke: #5E5E5E; }       /* wie .svg-grey */
+.sw-spinner { stroke: #1e467d; }            /* Ladering, wie .svg-blue-stroke */
+.sw-track.sw-error { stroke: #d9534f; stroke-width: 0.7; }   /* Fehlerhinweis am Schalter */
+.ring-star { fill: #1e467d; stroke: var(--bg); stroke-width: 0.25; }   /* Stern auf dem Ring (Wartezustand), Farbe wie .sw-spinner */
+.dev-ring.ring-error { stroke: #d9534f; stroke-width: 0.9; }           /* Fehlerhinweis am Ring */
+
+/* Detailbereich: Knopf zum Ein-/Ausblenden */
+.details-btn { font-size: 3vh; background-color: var(--btn-bg); color: var(--btn-fg); cursor: pointer; padding: 3px; }
+
+/* Energiegrafik */
+.energy-picture { position: relative; width: 1000px; max-width: 100%; margin: 0 auto; }   /* zentriert; auf schmalen Fenstern verkleinert statt zu scrollen */
+
+/* Fehlerbanner über der ganzen Grafik: erscheint, wenn die Live-Aktualisierung fehlschlägt, und verschwindet,
+   sobald wieder Daten kommen. Die Grafik wird währenddessen abgedunkelt (veraltete Werte). */
+.picture-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  box-sizing: border-box;
+  padding: 0.6em 1em;
+  text-align: center;
+  font-weight: bold;
+  color: #ffffff;
+  background: #d9534f;                 /* wie .red-txt */
+  pointer-events: none;                /* blockiert keine Tipps auf der Grafik */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+.picture-banner.is-visible { opacity: 0.96; visibility: visible; }
+.energy-picture #liveSVG { transition: opacity 0.2s; }
+.energy-picture.is-stale #liveSVG { opacity: 0.45; }
+.sw-track { fill: var(--track); stroke: var(--track-stroke); }   /* Boiler-Schalter: Schiene */
+.sw-knob { fill: var(--knob); stroke: var(--knob-stroke); }      /* Boiler-Schalter: Knopf */
+.ind-outline { fill: var(--bg); }                                /* Rand der Richtungspfeile */
+.dc-outline { stroke: var(--bg); }                               /* Rand des kleinen Solar-Symbols */
+
+/* Dunkelmodus: manuell gewählt */
+:root[data-theme="dark"] {
+  --bg: #16181a;
+  --fg: #e6e6e6;
+  --muted: #a3a3a3;
+  --danger: #e8736f;
+  --track: #2f3438;
+  --track-stroke: #555b61;
+  --knob: #dcdfe1;
+  --knob-stroke: #9aa0a6;
+  --btn-bg: #3a3e42;
+  --btn-fg: #e6e6e6;
+  color-scheme: dark;
+}
+:root[data-theme="dark"] body { background: var(--bg); color: var(--fg); }
+/* Menü-Symbole und Charts sind für hellen Hintergrund gedacht: Helligkeit umkehren, Farbton behalten.
+   Die Geräte-Plaketten in der Grafik (pics/*.svg) sind selbst grün und bleiben unverändert. */
+:root[data-theme="dark"] .nav-icon,
+:root[data-theme="dark"] .chart-img { filter: invert(1) hue-rotate(180deg); }
+:root[data-theme="dark"] .nav-icon,
+:root[data-theme="dark"] .chart-img { mix-blend-mode: screen; }   /* der (nach dem Umkehren) schwarze Bildhintergrund wird durchsichtig */
+/* Ausgegraute Geräte (Filter icon-off): im Dunkelmodus deutlicher als im hellen Modus (45 %), ergibt ein helles Grau */
+:root[data-theme="dark"] .dev-icon[filter*="icon-off"] { opacity: 0.85; }
+:root[data-theme="dark"] .ico-moon { display: none; }
+:root[data-theme="dark"] .ico-sun { display: inline; }
+:root[data-theme="dark"] .sw-spinner { stroke: #7fa6e0; }
+:root[data-theme="dark"] .ring-star { fill: #7fa6e0; }
+
+/* Dunkelmodus: Browser-Vorgabe, solange nicht manuell auf hell gestellt */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #16181a;
+    --fg: #e6e6e6;
+    --muted: #a3a3a3;
+    --danger: #e8736f;
+    --track: #2f3438;
+    --track-stroke: #555b61;
+    --knob: #dcdfe1;
+    --knob-stroke: #9aa0a6;
+    --btn-bg: #3a3e42;
+    --btn-fg: #e6e6e6;
+    color-scheme: dark;
+  }
+  :root:not([data-theme="light"]) body { background: var(--bg); color: var(--fg); }
+  :root:not([data-theme="light"]) .nav-icon,
+  :root:not([data-theme="light"]) .chart-img { filter: invert(1) hue-rotate(180deg); }
+  :root:not([data-theme="light"]) .nav-icon,
+  :root:not([data-theme="light"]) .chart-img { mix-blend-mode: screen; }
+  :root:not([data-theme="light"]) .dev-icon[filter*="icon-off"] { opacity: 0.85; }
+  :root:not([data-theme="light"]) .ico-moon { display: none; }
+  :root:not([data-theme="light"]) .ico-sun { display: inline; }
+  :root:not([data-theme="light"]) .sw-spinner { stroke: #7fa6e0; }
+  :root:not([data-theme="light"]) .ring-star { fill: #7fa6e0; }
+}
